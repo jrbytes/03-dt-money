@@ -23,4 +23,8 @@ export const GlobalStyle = createGlobalStyle`
       font: ${theme.font.fontWeightNormal} 1rem ${theme.font.family}, sans-serif;
     `}
   }
+
+  button {
+    transition: background-color 0.2s;
+  }
 `

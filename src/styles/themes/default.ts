@@ -25,18 +25,22 @@ export const defaultTheme = {
   },
 
   sizes: {
-    xs: '0.75rem',
-    sm: '1rem',
-    md: '1.5rem',
-    lg: '2rem',
-    xl: '3rem',
+    xsmall: '0.75rem',
+    small: '1rem',
+    medium: '1.5rem',
+    large: '2rem',
+    xlarge: '3rem',
   },
 
   spacings: {
-    xs: '0.25rem',
-    sm: '0.5rem',
-    md: '1rem',
-    lg: '2rem',
-    xl: '4rem',
+    xsmall: '0.25rem',
+    small: '0.5rem',
+    medium: '1rem',
+    large: '2rem',
+    xlarge: '4rem',
   },
+
+  contentSize: '74rem',
+
+  borderRadius: '6px',
 } as const
