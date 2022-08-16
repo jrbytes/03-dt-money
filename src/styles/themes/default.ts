@@ -17,4 +17,26 @@ export const defaultTheme = {
   red300: '#F75A68',
   red500: '#AB222E',
   red700: '#7A1921',
+
+  font: {
+    family: 'Fira Code',
+    fontWeightNormal: '400',
+    fontWeightBold: '700',
+  },
+
+  sizes: {
+    xs: '0.75rem',
+    sm: '1rem',
+    md: '1.5rem',
+    lg: '2rem',
+    xl: '3rem',
+  },
+
+  spacings: {
+    xs: '0.25rem',
+    sm: '0.5rem',
+    md: '1rem',
+    lg: '2rem',
+    xl: '4rem',
+  },
 } as const
