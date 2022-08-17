@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
 export const HeaderContent = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    max-width: ${theme.contentSize};
+    max-width: ${theme.layout.contentWidth};
     margin: 0 auto;
     padding: 0 ${theme.spacings.medium};
 

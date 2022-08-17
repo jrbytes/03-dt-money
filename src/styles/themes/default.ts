@@ -40,7 +40,9 @@ export const defaultTheme = {
     xlarge: '4rem',
   },
 
-  contentSize: '74rem',
+  layout: {
+    contentWidth: '74rem',
+  },
 
   borderRadius: '6px',
 } as const
