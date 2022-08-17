@@ -18,6 +18,8 @@ export const defaultTheme = {
   red500: '#AB222E',
   red700: '#7A1921',
 
+  overlayBackground: '#00000075',
+
   font: {
     family: 'Fira Code',
     fontWeightNormal: '400',

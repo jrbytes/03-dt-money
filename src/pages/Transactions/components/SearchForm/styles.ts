@@ -30,6 +30,7 @@ export const SearchFormContainer = styled.form`
       color: ${theme.green300};
       font-weight: ${theme.font.fontWeightBold};
       border-radius: ${theme.borderRadius};
+      cursor: pointer;
 
       &:hover {
         background: ${theme.green500};
