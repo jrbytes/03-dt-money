@@ -14,7 +14,7 @@ export const TransactionsTable = styled.table`
     width: 100%;
     border-collapse: separate;
     border-spacing: 0 ${theme.spacings.small};
-    /* margin-top: ${theme.spacings.medium}; */
+    margin-top: ${theme.spacings.medium};
 
     td {
       padding: ${theme.spacings.medium} ${theme.spacings.large};

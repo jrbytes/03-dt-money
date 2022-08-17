@@ -25,6 +25,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
   }
 `
