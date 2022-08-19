@@ -1,8 +1,24 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import { useForm } from 'react-hook-form'
 import * as S from './styles'
 
+type NewTransactionFormProps = {
+  description: string
+  price: number
+  category: string
+  type: 'income' | 'outcome'
+}
+
 export function NewTransactionModal() {
+  const { register, handleSubmit, formState } =
+    useForm<NewTransactionFormProps>()
+  const { isSubmitting } = formState
+
+  async function handleCreateNewTransaction(data: NewTransactionFormProps) {
+    console.log(data)
+  }
+
   return (
     <Dialog.Portal>
       <S.Overlay />
@@ -14,10 +30,27 @@ export function NewTransactionModal() {
           <X size={24} />
         </S.CloseButton>
 
-        <form action="">
-          <input type="text" placeholder="Descrição" required />
-          <input type="number" placeholder="Preço" required />
-          <input type="text" placeholder="Categoria" required />
+        <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+          <input
+            type="text"
+            placeholder="Descrição"
+            required
+            {...register('description')}
+          />
+          <input
+            type="number"
+            placeholder="Preço"
+            required
+            {...register('price', {
+              valueAsNumber: true,
+            })}
+          />
+          <input
+            type="text"
+            placeholder="Categoria"
+            required
+            {...register('category')}
+          />
 
           <S.TransactionType>
             <S.TransactionTypeButton variant="income" value="income">
@@ -30,7 +63,9 @@ export function NewTransactionModal() {
             </S.TransactionTypeButton>
           </S.TransactionType>
 
-          <button type="submit">Cadastrar</button>
+          <button type="submit" disabled={isSubmitting}>
+            Cadastrar
+          </button>
         </form>
       </S.Content>
     </Dialog.Portal>
