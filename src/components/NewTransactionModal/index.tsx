@@ -1,17 +1,17 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import { useContext } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import {
+  NewTransactionFormProps,
+  TransactionsContext,
+} from '../../contexts/TransactionsContext'
 import * as S from './styles'
 
-type NewTransactionFormProps = {
-  description: string
-  price: number
-  category: string
-  type: 'income' | 'outcome'
-}
-
 export function NewTransactionModal() {
-  const { control, register, handleSubmit, formState } =
+  const { createTransaction } = useContext(TransactionsContext)
+
+  const { control, register, handleSubmit, formState, reset } =
     useForm<NewTransactionFormProps>({
       defaultValues: {
         type: 'income',
@@ -20,7 +20,8 @@ export function NewTransactionModal() {
   const { isSubmitting } = formState
 
   async function handleCreateNewTransaction(data: NewTransactionFormProps) {
-    console.log(data)
+    createTransaction(data)
+    reset()
   }
 
   return (

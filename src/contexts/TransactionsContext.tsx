@@ -1,6 +1,13 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
 
+export type NewTransactionFormProps = {
+  description: string
+  price: number
+  category: string
+  type: 'income' | 'outcome'
+}
+
 interface TransactionProps {
   id: number
   description: string
@@ -13,6 +20,7 @@ interface TransactionProps {
 interface TransactionContextType {
   transactions: TransactionProps[]
   fetchTransactions: (query?: string) => Promise<void>
+  createTransaction: (data: NewTransactionFormProps) => Promise<void>
 }
 
 interface TransactionsProviderProps {
@@ -27,6 +35,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   async function fetchTransactions(query?: string) {
     const { data } = await api.get('transactions', {
       params: {
+        _sort: 'createdAt',
+        _order: 'desc',
         q: query,
       },
     })
@@ -34,12 +44,23 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     setTransactions(data)
   }
 
+  async function createTransaction(data: NewTransactionFormProps) {
+    const response = await api.post('transactions', {
+      ...data,
+      createdAt: new Date(),
+    })
+
+    setTransactions([response.data, ...transactions])
+  }
+
   useEffect(() => {
     fetchTransactions()
   }, [])
 
   return (
-    <TransactionsContext.Provider value={{ transactions, fetchTransactions }}>
+    <TransactionsContext.Provider
+      value={{ transactions, fetchTransactions, createTransaction }}
+    >
       {children}
     </TransactionsContext.Provider>
   )

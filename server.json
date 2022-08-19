@@ -15,6 +15,22 @@
       "category": "Alimentação",
       "price": 50,
       "createdAt": "2022-07-29T19:30:44.505Z"
+    },
+    {
+      "type": "outcome",
+      "description": "Caixa de Sucrilhos",
+      "price": 200,
+      "category": "Alimentação",
+      "createdAt": "2022-08-19T15:01:26.106Z",
+      "id": 3
+    },
+    {
+      "type": "income",
+      "description": "Venda de domínio",
+      "price": 45,
+      "category": "Site",
+      "createdAt": "2022-08-19T15:15:23.764Z",
+      "id": 4
     }
   ]
 }
