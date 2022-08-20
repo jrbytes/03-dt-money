@@ -1,6 +1,6 @@
 import { MagnifyingGlass } from 'phosphor-react'
-import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import { useContextSelector } from 'use-context-selector'
 import { TransactionsContext } from '../../../../contexts/TransactionsContext'
 import * as S from './styles'
 
@@ -9,7 +9,12 @@ type SearchFormProps = {
 }
 
 export function SearchForm() {
-  const { fetchTransactions } = useContext(TransactionsContext)
+  const fetchTransactions = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context.fetchTransactions
+    },
+  )
 
   const { register, handleSubmit, formState } = useForm<SearchFormProps>()
   const { isSubmitting } = formState
